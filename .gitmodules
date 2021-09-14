@@ -239,3 +239,6 @@
 	path = themes/niara
 	url = https://github.com/thirtybees/niara.git
 	ignore = dirty
+[submodule "modules/swish"]
+        path = modules/swish
+        url = https://github.com/martin67/swish
