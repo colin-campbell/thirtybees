@@ -1,0 +1,24 @@
+name: sleepykiller
+recipe: lamp
+config:
+  php: '7.4'
+  database: mariadb
+  xdebug: false
+  webroot: .
+
+tooling:
+  composer:
+    service: appserver
+    env:
+      COMPOSER: composer/php7.4/composer.json
+
+  debug-on:
+    service: appserver
+    description: Enable xdebug for apache.
+    cmd: "docker-php-ext-enable xdebug && /etc/init.d/apache2 reload"
+    user: root
+  debug-off:
+    service: appserver
+    description: Disable xdebug for apache.
+    cmd: "rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload"
+    user: root
